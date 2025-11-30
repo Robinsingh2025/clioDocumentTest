@@ -84,8 +84,14 @@ steps:
       - name: ''
         value: ''
         disabled: true
-      url: 'https://app.clio.com/api/v4/document_versions/{{steps.custom_request.$return_value.data[0].latest_document_version.id}}/download
+      url: 'https://app.clio.com/api/v4/documents/{{steps.custom_request.$return_value.data[0].id}}/download.json
 
         '
       tab: Auth
+- namespace: openai
+  runtime: nodejs20.x
+  uses: "./openai/entry.js"
+  props:
+    openai:
+      authProvisionId: apn_GXhwX4K
 
